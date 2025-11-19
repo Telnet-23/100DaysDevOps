@@ -28,6 +28,8 @@ if [ "$shell" = "y" ]; then
 	sudo passwd $name
 else
 	sudo usermod -s /sbin/nologin $name
+	echo "Please enter a password"
+	sudo passwd $name
 fi
 
 # Add Sudoer permission
