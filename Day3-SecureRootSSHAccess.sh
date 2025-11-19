@@ -12,9 +12,16 @@ while [ "$question" != "y" ] && [ "$question" != "n" ]; do
 done
 
 if [ "$question" = "y" ]; then
-	sudo sed -i 's/PermitRootLogin */PermitRootLogin yes/' /etc/ssh/sshd_config 
-elif [ "$question" = "n" ]; then
-	sudo sed -i 's/PermitRootlogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+	if grep -Eq "^\s*#?\s*PermitRootLogin" /etc/ssh/sshd_config; then
+        	sudo sed -i 's/^\s*#\?\s*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+    	else
+        	sudo echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+    	fi
+    echo "Root login permitted."
+else
+    # Comment out any PermitRootLogin line
+    sudo sed -i 's/^\s*\(PermitRootLogin.*\)/#\1/' /etc/ssh/sshd_config
+    echo "Root login denied (PermitRootLogin is commented out)."
 fi
 
 # Restart ssh
