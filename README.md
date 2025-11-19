@@ -1,9 +1,7 @@
-# 100 Days of DevOps by KodeKloud
+## 100 Days of DevOps by KodeKloud
 
-I've been trying to learn alot more about DevOps and the key assocaited tools (Linux, Git, Docker, Terraform etc) and stumbled upon this course. 
+Lately, I've been deepening my understanding of DevOps and the essential tools that underpin it, including Linux, Git, Docker, Terraform, and Kubernetes. As part of this journey, I recently discovered a promising course.
 
-I know I have a bit of a weakness in bash scripting so I have decided today (51 days in) to go back and try to build bash scripts for every days challange. 
+To strengthen my Bash scripting abilities and build a repository of practical scripts, I’ve decided—51 days into the course—to revisit and tackle as many of the previous tasks as possible by developing scripts, Dockerfiles, and related artifacts. This approach should reinforce my Bash skills and consolidate everything I've learned so far.
 
-I believe this will be a great way to improve my bash scripting and refresh all the topics covered so far. 
-
-Note, the Linux distro I use is Fedora and all the scripts are written with RHEL based systemes in mind.
+For context, I use Fedora as my primary Linux distribution, and all scripts are tailored with RHEL-based systems in mind.
