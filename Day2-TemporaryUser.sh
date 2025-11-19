@@ -8,12 +8,12 @@
 
 # Create the user
 read -p "Please enter the new users name: " name
-adduser $name
+sudo adduser $name
 
 # Set password
 echo "Please enter a new password for the user"
-passwd $name
+sudo passwd $name
 
 # Set Account Expiry
 echo "Please confirm the account expiry details"
-chage $name
+sudo chage $name
