@@ -15,7 +15,7 @@ read -p "What is the users name? " name
 read -p "Does the user require an interactive shell? [y/n]: " shell
 
 # Add the user
-adduser $name
+sudo adduser $name
 
 # set the shell and password
 while [ "$shell" != "y" ] && [ "$shell" != "n" ]; do
@@ -23,11 +23,11 @@ while [ "$shell" != "y" ] && [ "$shell" != "n" ]; do
 done
 
 if [ "$shell" = "y" ]; then
-	usermod -s /bin/bash $name
+	sudo usermod -s /bin/bash $name
 	echo "Please enter a password"
-	passwd $name
+	sudo passwd $name
 else
-	usermod -s /sbin/nologin $name
+	sudo usermod -s /sbin/nologin $name
 fi
 
 # Add Sudoer permission
@@ -37,8 +37,8 @@ while [ "$permission" != "y" ] && [ "$permission" != "n" ]; do
 	read -p "Please stay y or n. Does the user require Sudo permissions? [y/n]: " permission
 done
 
-if [ "$permission" = "y"]; then
-	usermod -aG wheel $name
+if [ "$permission" = "y" ]; then
+	sudo usermod -aG wheel $name
 else
 	echo "User does not have Sudo permissions"
 fi
