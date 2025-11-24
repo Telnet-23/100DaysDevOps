@@ -13,7 +13,7 @@ based on the requirements, the DevOps team has decided to create a deployment fo
 1. Create a deployment using nginx image with latest tag only and remember to mention the tag i.e nginx:latest. Name it as nginx-deployment. The container should be named as nginx-container, 
 also make sure replica counts are 3.
 
-2. reate a NodePort type service named nginx-service. The nodePort should be 30011.
+2. Create a NodePort type service named nginx-service. The nodePort should be 30011.
 
 ## The Solution
 With all things Kubernetes, It starts with making a new manifest ```vi nginx-deployment.yaml```
