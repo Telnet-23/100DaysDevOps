@@ -125,11 +125,11 @@ spec:
         - name: MYSQL_DATABASE
           value: database_blog
         - name: MYSQL_ROOT_PASSWORD
-          value: Enormous-Purlpe-Dinosaure1993!
+          value: Enormous-Purple-Dinosaur1993!
         - name: MYSQL_PASSWORD
-          value: Enormous-Purlpe-Dinosaure1994!
+          value: Enormous-Purple-Dinosaur1994!
         - name: MYSQL_USER
-          value: Enormous-Purlpe-Dinosaure1995!
+          value: Enormous-Purple-Dinosaur1995!
         volumeMounts:
         - name: db
           mountPath: /var/lib/mysql
