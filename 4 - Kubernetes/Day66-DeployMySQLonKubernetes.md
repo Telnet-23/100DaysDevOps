@@ -20,16 +20,16 @@ A new MySQL server needs to be deployed on Kubernetes cluster. The Nautilus DevO
 6.) Define some Environment variables within the container:
 
 
-  a) name: MYSQL_ROOT_PASSWORD, should pick value from secretKeyRef name: mysql-root-pass and key: password
+  - name: MYSQL_ROOT_PASSWORD, should pick value from secretKeyRef name: mysql-root-pass and key: password
 
 
-  b) name: MYSQL_DATABASE, should pick value from secretKeyRef name: mysql-db-url and key: database
+  - name: MYSQL_DATABASE, should pick value from secretKeyRef name: mysql-db-url and key: database
 
 
-  c) name: MYSQL_USER, should pick value from secretKeyRef name: mysql-user-pass key key: username
+  - name: MYSQL_USER, should pick value from secretKeyRef name: mysql-user-pass key key: username
 
 
-  d) name: MYSQL_PASSWORD, should pick value from secretKeyRef name: mysql-user-pass and key: password
+  - name: MYSQL_PASSWORD, should pick value from secretKeyRef name: mysql-user-pass and key: password
 
 ## The Solution
 
