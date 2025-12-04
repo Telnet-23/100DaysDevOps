@@ -52,7 +52,7 @@ FRONT END TIER
 
 ## The Solution
 
-```vi guestbook.yaml```
+Step 1 as always was to build the manifest ```vi guestbook.yaml```. I found a template online that nested them all together in one manifest. Given the sheer size and the 1 hour time limit on this, I used that tempalte and populated it  with the information relevant to what I was trying to achieve. 
 
 ```
 apiVersion: apps/v1
@@ -211,10 +211,12 @@ spec:
     app: guestbook
     tier: frontend
 ```
-```kubectl apply -f guestbook.yaml```
+Once that was one, I applied the config with ```kubectl apply -f guestbook.yaml```  then started verifying the app with ```kubectl get deployments```, ```kubectl get pods``` & ```kubectl get services```.
 
-```kubectl get deployments```
+I found that  my deployments were not up. I also clicked the 'App' button and got a 502 error. 
 
-```kubectl get pods```
+As I began troubleshooting by getting kubectl to describe my pods, I found they were suddenly up. I then clicked the 'App' button and verifed it and yeah! Up and running. 
 
-```kubectl get services```
+## Thoughts and Takeaways
+
+What this challenge taught me is that sometimes, a template is just what you need, save time and reduce the risk of human error. I understand Kubernetes manifests well enough now to know how to populate them which is great, but there was no why I was writing that entire manifest problem free within an hour. I've been playing with Kubernetes for a little under 2 weeks now. Time for tea. 
