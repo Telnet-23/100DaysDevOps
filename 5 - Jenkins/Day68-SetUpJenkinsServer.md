@@ -38,11 +38,12 @@ Now when you click on the 'Jenkins' button in the top right hand corner, it will
 
 Install the suggested plugins. If any fail, simply 'Retry' them. 
 
-Once thats done, Add your user with the crentials provided in the problem and that about it. Jenkins is up and running and the task is done. 
+Once thats done, Add your user with the credentials provided in the problem and that about it. Jenkins is up and running and the task is done. 
 
 ## Thoughts and takeways
 
 This one threw me, it was all my fault but I guess it all comes down to attention to detail. Always read exactly whats being asked. I did use some Jenkins documentation also which I have linked. I was unaware it required Java to run to kept hitting a wall there too. Anyway, time for tea. 
 Reference Doc: https://www.jenkins.io/doc/book/installing/linux/#red-hat-centos
+
 
 
