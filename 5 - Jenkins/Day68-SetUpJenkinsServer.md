@@ -17,7 +17,9 @@ So, first of all, Lets SSH onto the Jenkins server with the credntials specified
 
 The we can add the repo and import the GPG Key. You will find this wont work as the server does not have wget so intall that first
 ```sudo yum install wget -y```
+
 ```sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo```
+
 ```sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key```
 
 If you dont know what a GPG Key is, this is how Gemini summerised it:
@@ -42,4 +44,5 @@ Once thats done, Add your user with the crentials provided in the problem and th
 
 This one threw me, it was all my fault but I guess it all comes down to attention to detail. Always read exactly whats being asked. I did use some Jenkins documentation also which I have linked. I was unaware it required Java to run to kept hitting a wall there too. Anyway, time for tea. 
 Reference Doc: https://www.jenkins.io/doc/book/installing/linux/#red-hat-centos
+
 
