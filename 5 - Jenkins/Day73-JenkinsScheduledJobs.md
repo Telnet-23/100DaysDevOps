@@ -36,4 +36,9 @@ Note:
 7. Then set the build steps to 'Send files or execute commands over SSH' and built the following SCP command. 
    <img width="903" height="580" alt="Screenshot 2025-12-12 at 21 31 09" src="https://github.com/user-attachments/assets/d0f42ecd-b5be-4765-8b7d-695d7dadb4ef" />
 
-My job kept failing, so I'll have to come back and try this tomorrow because I'm knackered :smile:
+8. When you run the job, It should work
+<img width="1358" height="487" alt="Screenshot 2025-12-13 at 13 01 56" src="https://github.com/user-attachments/assets/bcfc066b-2492-45f0-931a-f0431795c2b5" />
+
+## Thoughts and takeaways
+I spent quite a bit of time on this one and at first the job kept failing. I went away and did some research and I seemingly did everythnig right. You may notice the job gthat ran doesnt match the names of machines in the previous parts of the task (because I completed it the next day). But what I did differently was used the server IP's instead of the hostnames. Sounds like a DNS issue to me if ever there was one. Oh well, it worked in the end. Time for tea. 
+
