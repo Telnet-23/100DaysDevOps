@@ -20,3 +20,37 @@ LB server is already configured. You should be able to see the latest changes yo
 
 ## The Solution
 
+First things first, sign into Jenkins and install 4 plugins: 'Script Security', 'Git', 'Pipeline' and 'SSH Build Agents'. Tell Jenkins to restart once they install. 
+
+While thats doing tht, remembering from yesterdays challenge, install Java on the storage server as it will be come a node. 
+```sudo dnf install -y java-21-openjdk```
+
+Once thats done, change the owenr and permissions on ```/var/www/html``` to ensure nothing blocks the pipeline. 
+```
+sudo chown -R natasha:natasha /var/www/html
+sudo chmod -R 755 /var/www/html
+```
+
+Like yesterdays challenge, we need to add the storage server as a node so add natashas credentials and then create the node specifying the given root directory and natashas credentials. Set the launch method to 'Launch agent via execution of command on the agent node', the rest is pretty self explanitory. You will see it is in-sync if you did it right. If not, revise yesterdays problem
+<img width="1175" height="361" alt="Screenshot 2025-12-14 at 20 23 45" src="https://github.com/user-attachments/assets/e6763e06-9552-445c-9e1e-af5e5cb5e1dc" />
+
+Once that is done, create a new job, give it the right name and specify it as a 'Pipeline'. 
+
+```
+pipeline {
+    agent { label 'ststor01' }
+    stages {
+        stage('Deploy') {
+            steps {
+                git url: 'http://git.stratos.xfusioncorp.com/sarah/web_app.git'
+                sh 'cp -r index.html /var/www/html/'
+            }
+        }
+    }
+}
+```
+
+When you run the build, it should show as successful
+<img width="809" height="402" alt="Screenshot 2025-12-14 at 20 30 04" src="https://github.com/user-attachments/assets/abf7f073-d552-4049-b92a-02bdb24f00a4" />
+
+
