@@ -34,7 +34,7 @@ sudo chmod -R 755 /var/www/html
 Like yesterdays challenge, we need to add the storage server as a node so add natashas credentials and then create the node specifying the given root directory and natashas credentials. Set the launch method to 'Launch agent via execution of command on the agent node', the rest is pretty self explanitory. You will see it is in-sync if you did it right. If not, revise yesterdays problem
 <img width="1175" height="361" alt="Screenshot 2025-12-14 at 20 23 45" src="https://github.com/user-attachments/assets/e6763e06-9552-445c-9e1e-af5e5cb5e1dc" />
 
-Once that is done, create a new job, give it the right name and specify it as a 'Pipeline'. 
+Once that is done, create a new job, give it the right name and specify it as a 'Pipeline'. Below is the pipeline script I used. All it's doing is specifying its a pipeline, points it to the agent, sets it in the deploy stage then the steps point it to the git repo URL and then copy index.html to /var/www/html/ recursivly. 
 
 ```
 pipeline {
@@ -52,5 +52,9 @@ pipeline {
 
 When you run the build, it should show as successful
 <img width="809" height="402" alt="Screenshot 2025-12-14 at 20 30 04" src="https://github.com/user-attachments/assets/abf7f073-d552-4049-b92a-02bdb24f00a4" />
+
+## Thoughts and takeaways
+
+My first pipeline ever. Not too tricky actually, I feel like setting up the environment with the plugins, credentials and node were actually harder but hey ho. I'd like to do a lot more with pipelines (obviosly) so hopefully, these chellenges throw a few more at me :smile: Time for tea. 
 
 
