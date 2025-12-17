@@ -36,7 +36,7 @@ sudo chown -R natasha:natasha /var/www/html
 sudo chmod -R 755 /var/www/html
 ```
 
-5. Create a new job and give it the required name. Specify it as a Pipeline
+5. Create a new job and give it the required name. Enable “This project is parameterized” and add the string of 'BRANCH' with the value 'master' then add this groovy Script to the Pipeline.
 ```
 node('ststor01') {
     stage('Deploy') {
@@ -71,4 +71,9 @@ node('ststor01') {
 }
 ```
 
-** NOTE! I failed. I'll try again tomorrow
+run a build with parameters and specify 'BRANCH' and 'master' and you should get the following output:
+<img width="691" height="694" alt="Screenshot 2025-12-17 at 19 20 43" src="https://github.com/user-attachments/assets/687c21a8-63d7-4332-b92f-ed2a7fc31dee" />
+
+## Thoughts and takeaways
+
+I failed on my first attempt. I forgot to parameterise the build and add the string. I went through my previous steps and everythng else was fine. I felt a wolly. Oh well. Bloody hard challenge that. Time for tea.
