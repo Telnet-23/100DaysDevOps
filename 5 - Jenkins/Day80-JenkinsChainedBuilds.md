@@ -31,4 +31,15 @@ Then on 'Post-Build Actions' set it to 'Build Other Project' and give it a name 
 
 Create the second job and name it accordingly, it should match the name of the post-build action above.
 
-```echo $STAPP01_PW | sudo -S systemctl restart httpd```
+Specify that the build is parameterised and set it to 'Password Parameter' then add the 3 passwords for the app servers as parameters nameing each of them STAPP0X_PASS
+
+Once thats done, select "Send files or execute commands over SSH" in the build steps and run the below command on each server using their respective Password variable
+
+```echo $STAPP01_PASS | sudo -S systemctl restart httpd```
+
+Finally, run the 'deployments' build and make sure it runs successfully and triggers the other job as intended. 
+
+Make sure both jobs finish successfully and then check the 'App' button in KodeKloud. The website will now load with "Welcome to KodeKloud!" instead of the dreaded 503 error :smile: 
+
+## Thoughts and takeaways
+Jenkins is evidently very powerful. I'm going to spin up a Jenkins container in my home lab and really dig deep into this I think. It doesnt really seem that hard... it can just do a lot. I reckon a 'Jenkins Engineer' is probably a job that exisits. I dont know if past these challeneges I'll continue to use Jenkins just because it probably does so much more then I'll ever need. But a functioning understanding and a bit of skill in it will likely be helpful at some point in my career. Anyway! Time for tea. 
