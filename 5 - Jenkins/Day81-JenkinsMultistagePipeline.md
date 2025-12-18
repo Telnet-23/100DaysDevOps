@@ -54,6 +54,70 @@ pipeline{
 }
 ```
 
-*** My pipe line keeps failing as it thinks the last } should not be there. I'm basically 90% certain it should so I'm closing the lab and will see what information I can find on the error. 
+Once that runs, you should see it is successful in the output
+```
+Started by user admin
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/deploy-job
+[Pipeline] {
+[Pipeline] stage (hide)
+[Pipeline] { (Deploy)
+[Pipeline] git
+The recommended git tool is: NONE
+using credential sarah-git
+Cloning the remote Git repository
+Cloning repository http://git.stratos.xfusioncorp.com/sarah/web.git
+ > git init /var/lib/jenkins/workspace/deploy-job # timeout=10
+Fetching upstream changes from http://git.stratos.xfusioncorp.com/sarah/web.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- http://git.stratos.xfusioncorp.com/sarah/web.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url http://git.stratos.xfusioncorp.com/sarah/web.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 5cdb16e251fc5fbdf9c62a95161c7cdb5f426e9e (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 5cdb16e251fc5fbdf9c62a95161c7cdb5f426e9e # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b master 5cdb16e251fc5fbdf9c62a95161c7cdb5f426e9e # timeout=10
+Commit message: "Updated index.html"
+First time build. Skipping changelog.
+[Pipeline] withCredentials
+Masking supported pattern matches of $SSH_PASS
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [SSH_PASS]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ sshpass -p **** scp -o StrictHostKeyChecking=no index.html natasha@ststor01:/var/www/html/
+Warning: Permanently added 'ststor01' (ED25519) to the list of known hosts.
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] echo
+Testing app...
+[Pipeline] sh
++ curl -f http://stlb01:8091
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
 
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    34  100    34    0     0  18191      0 --:--:-- --:--:-- --:--:-- 34000
+Welcome to xFusionCorp Industries
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+```
+
+## Thoughts and takeaways 
+My first full multistage pipeline. I get it... You're effectivly just breaking it down into stages. I had a lot of initial build issues with this due to misplaced } in my my script but thats fine, Its all part of the learning. I am wondering if other tools such as GitHub actions are simpler... particularly in the syntax but I'll need to look a little deeper. The fact I can deploy a Jenkins container on my home lab and have learn this in a self contained environment and build pipelines for CI/CD is prettu cool. I imagine understanding how to build and utilise pipelines is much more crucial then the tool you do it in. I'm waffling. Time for tea. 
 
