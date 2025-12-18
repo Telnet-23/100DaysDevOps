@@ -48,6 +48,7 @@ pipeline{
             steps{
                 echo 'Testing app...'
                 sh 'curl -f http://stlb01:8091'
+            }
         }
     }
 }
