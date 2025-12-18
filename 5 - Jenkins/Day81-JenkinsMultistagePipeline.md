@@ -27,7 +27,7 @@ First thing we need to do is ssh onto the storage server and update the index.ht
 
 Now sign into Jenkins and install the following plugins: Git, Pipeline
 
-Once they're both installed with no errors, add Sarahs Git credentials to the Jenkins instance as well as Natashas credentials for the storage server. 
+Once they're both installed with no errors, add Sarahs Git credentials to the Jenkins instance as well as Natashas credentials for the storage server. These credentials will be used in the pipeline so make a note of the ID you give them, I used 'sarah-git' and 'nat-ssh'
 
 ```
 pipeline{
