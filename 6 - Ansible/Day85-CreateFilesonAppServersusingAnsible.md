@@ -5,7 +5,7 @@ a. Create an inventory file ~/playbook/inventory on jump host and include all ap
 
 b. Create a playbook ~/playbook/playbook.yml to create a blank file /usr/src/opt.txt on all app servers.
 
-c. Set the permissions of the /usr/src/opt.txt file to 0644.
+c. Set the permissions of the /usr/src/opt.txt file to 0744.
 
 d. Ensure the user/group owner of the /usr/src/opt.txt file is tony on app server 1, steve on app server 2 and banner on app server 3.
 
