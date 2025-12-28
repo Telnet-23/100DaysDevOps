@@ -23,7 +23,7 @@ We already have an inventory file under /home/thor/ansible directory on jump hos
 
 
 ## The Solution
-For this tasks, we will tackle all the tasks in one big playbook. So, ```vi playbook.yml``` is the first thing we should do and it should look somrthing like this, take each step of the task as a different step in the playbook and think logically.
+For this tasks, we will tackle all the tasks in one big playbook. So ```cd ansible``` then confirm the app servers are al that are in the inventory ```cat inventory```. If you're happy with that, create your playbook ```vi playbook.yml```. It should look somrthing like this, take each step of the task as a different step in the playbook and think logically.
 ```
 - name: install web server
   hosts: all
@@ -60,10 +60,12 @@ For this tasks, we will tackle all the tasks in one big playbook. So, ```vi play
         mode: '0644'
 ```
 
+Once you're happy that you have met all the requirments in the task, run the playbook.
 ```
 ansible-playbook -i inventory playbook.yml
 ```
 
+If it succeeds, your output should display like this:
 ```
 PLAY [install web server] *******************************************************
 
@@ -102,13 +104,12 @@ stapp01                    : ok=6    changed=5    unreachable=0    failed=0    s
 stapp02                    : ok=6    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 stapp03                    : ok=6    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
 ```
-
+If you want to make sure the file is there and looks exactly as its supposed to on all app servers, you can cat the index.html file from the jumpbox using Ansible.
 ```
-ansible all -i inventory all -m shell -a "cat /var/www/html/index.html
+ansible -i inventory all -m shell -a "cat /var/www/html/index.html"
 ```
-        
-      
-    
 
+Now you have confirmed that the index.html is present and has the required text on the required line. You should be good to complete the challenge.
 
 ## Thoughts and Takeaways
+I feel rough today. Did not want to do anything but here I am, the challenge was good. I failed a few times at first in that my playbook was having issues but its all part of the learning. Still very much enjoying Ansible not just for its simplicity nd ease of use but also when you get an error, the error messages pretty clearly state where the problem lies. I did not find this to be the case with Kubernetes for instance :smile: Anyway. Great challenge, certainly the biggest and hardest Ansible challenge so far so I imagine the next couple days are going to test what I have learned.Time for tea and a nap I think. 
