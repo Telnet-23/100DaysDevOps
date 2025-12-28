@@ -43,12 +43,13 @@ For this tasks, we will tackle all the tasks in one big playbook. So ```cd ansib
     - name: create index.html
       copy:
         dest: /var/www/html/index.html
-        content: " "
+        content: "This is a Nautilus sample file, created using Ansible!"
         force: yes
 
     - name: edit index.html
       lineinfile:
         path: /var/www/html/index.html
+        line: "Welcome to xFusionCorp Industries!"
         insertbefore: BOF
         state: present
 
@@ -57,7 +58,7 @@ For this tasks, we will tackle all the tasks in one big playbook. So ```cd ansib
         path: /var/www/html/index.html
         owner: apache
         group: apache
-        mode: '0644'
+        mode: '0655'
 ```
 
 Once you're happy that you have met all the requirments in the task, run the playbook.
