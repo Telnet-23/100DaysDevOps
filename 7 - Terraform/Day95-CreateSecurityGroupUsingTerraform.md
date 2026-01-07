@@ -43,7 +43,7 @@ resource "aws_security_group" "nautilus-sg" {
     to_port = 80
 
     protocol = "tcp"
-    cidr_block = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
  }
 
  ingress {
@@ -52,7 +52,7 @@ resource "aws_security_group" "nautilus-sg" {
     to_port = 22
 
     protocol = "tcp"
-    cidr_block = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
  }
 }
 ```
