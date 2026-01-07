@@ -77,3 +77,7 @@ You can then view the state with
 terraform state list
 ```
 
+## Thoughts and takeaways
+
+I was battling against it there. Doing this on my work laptop and Windows 11 as it seems cant even do the basics anymore without having issues. An operating system that cant even operate your system. Excellent... But at least we got co-pilot aye?! Anyway I digress. Good challenege, I'd prefer to be trying to learn Terraform in Azure to start with because I know its services and ecosystem and can picture what I'm building in my head but I guess the syntax and file structure will more or less stay the same across providers so practice is practice. time for tea. Up yours Windows. 
+
