@@ -21,27 +21,20 @@ The Nautilus DevOps team is expanding their AWS infrastructure and requires the 
   - KKE_ec2_private for the name of the EC2 instance.
 
 ## The Solution
-
+As the variables will be called upon in the main.tf file, I'll make ```variabes.tf``` first. Its contents should look like this
 ```
-variabes.tf
-```
-
-```
-variable "KKK_VPC_CIDR" {
+variable "KKE_VPC_CIDR" {
   default = "10.0.0.0/16"
+}
 
-variable "KKK_SUBNET_CIDR" {
+variable "KKE_SUBNET_CIDR" {
   default = "10.0.1.0/24"
 }
 ```
-
-```
-main.tf
-```
-
+After thats done, create ```main.tf```. Mine looked like this and be aware, I made a lot of mistakes before this finally worked. 
 ```
 resource "aws_vpc" "devops_vpc" {
-  cidr_block = var.KKK_VPC_CIDR
+  cidr_block = var.KKE_VPC_CIDR
   tags = {
     Name = "devops-priv-vpc"
   }
@@ -49,7 +42,7 @@ resource "aws_vpc" "devops_vpc" {
 
 resource "aws_subnet" "devops_subnet" {
   vpc_id = aws_vpc.devops_vpc.id
-  cidr_block = var.KKK_SUBNET_CIDR
+  cidr_block = var.KKE_SUBNET_CIDR
   map_public_ip_on_launch = false
   tags = {
     Name = "devops-priv-subnet"
@@ -64,7 +57,7 @@ resource "aws_security_group" "devops_sg" {
     from_port = 0
     to_port = 0
     protocol = "-1"
-    cidr_blocks = [var.KKK_VPC_CIDR]
+    cidr_blocks = [var.KKE_VPC_CIDR]
   }
   egress {
     from_port = 0
@@ -92,28 +85,23 @@ resource "aws_instance" "devops_ec2" {
     Name = "devops-priv-ec2"
   }
 }
-
 ```
-
+And then finally, create the ```outputs.tf``` file.
 ```
-outputs.tf
-```
-
-```
-output "KKK_vpc_name" {
+output "KKE_vpc_name" {
   value = aws_vpc.devops_vpc.tags["Name"]
 }
 
-output "KKK_subnet_name" {
+output "KKE_subnet_name" {
   value = aws_subnet.devops_subnet.tags["Name"]
 }
 
-output "KKK_ec2_private" {
+output "KKE_ec2_private" {
   value = aws_instance.devops_ec2.tags["Name"]
 }
 ```
 
-
+Run the holy trinity and troubleshoot along the way. You almost certianly made an error or 2 or misplaces a { 
 ```
 terraform init
 terraform plan
@@ -126,5 +114,6 @@ terraform show
 terraform state list
 ```
 
-
+## Thoughts and takeaways
+I failed this one a couple of times. One time for the stupidest reason (I called the variable file variable.tf and not variables.tf). Its all learning. I was told Terraform was easy but so far, I'm not seeing it :smile: Again it may also be my lack of aws knowledge and practice working against me here. I'm trying to automate deployments for things I've never manually deployed. Still fun though and I'll be looking to work it into more Azure based projects and eventually, when I start picking up some AWS, At least I'll know some Terraform. Time for tea. 
 
