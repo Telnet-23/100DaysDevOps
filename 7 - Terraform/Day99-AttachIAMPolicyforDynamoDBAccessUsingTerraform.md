@@ -100,6 +100,7 @@ resource "aws_iam_policy" "xfusion_readonly_policy" {
 resource "aws_iam_role_policy_attachment" "xfusion_attach" {
   role = aws_iam_role.xfusion_role.name
   policy_arn = aws_iam_policy.xfusion_readonly_policy.arn
+}
 ```
 
 Then we can create the ```outputs.tf``` file which will look something like this
@@ -109,7 +110,7 @@ output "kke_dynamodb_table" {
 }
 
 output "kke_iam_role_name" {
-  value = "aws_iam_role.xfusion_role.name
+  value = aws_iam_role.xfusion_role.name
 }
 
 output "kke_iam_policy_name" {
@@ -126,6 +127,8 @@ terraform apply
 
 You can then verify by checking the state file with ```terraform state list``` and show the full deployment with ```terraform show```
 
+## Thoughts and takeaways
+Thats was brutal. Did not go the way I hoped at all. Took ages and many an error were hit. I get the purpose of IaC but I feel like if the build isnt something that will ever need repeating, it may not actually be a time saver at all. I somewhat feel that this task for instacnce would have been a 5 min job in the console. If however, you want the option of having the deployment ready to push again at a moment notice, of course its a time saver in the long run. But yeah, that one took me about 40 minutes so... Not the fastest means of deployment. Time for tea. 
 
 
 
