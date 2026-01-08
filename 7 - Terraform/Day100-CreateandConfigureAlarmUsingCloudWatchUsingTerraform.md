@@ -61,3 +61,6 @@ terraform apply
 ```
 
 You can verify your work with ```terraform state list``` and ```terraform show```
+
+## Thoughts and takeaways
+That felt slightly easier. Nice to know monitoring can also be automated and again, you're just declaring exactly what to monitor and the alert triggers. Nice and simple. Well! day 100 done. Its been emotional. For one last time.... Time for tea. 
