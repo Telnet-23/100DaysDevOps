@@ -6,4 +6,6 @@ To strengthen my Bash scripting abilities and build a repository of practical sc
 
 For context, I use Fedora as my primary Linux distribution, and all scripts are tailored with RHEL-based systems in mind.
 
+I have now finished all the challenges in this course but I'm still adding tasks from 'pre-repo' as the first 50 odd days are missing. 
+
 If you also fancy the challenge, you can join using this link: https://engineer.kodekloud.com/signup?referral=67cdeb1a2a453cec08efefe6
